@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-   origin: process.env.NODE_ENV === "development" ? "http://localhost:5173" : "https://real-time-chat-app-358e.vercel.app/",
+   origin: process.env.NODE_ENV === "development" ? "http://localhost:5173" : "",
     credentials: true,
   })
 );
