@@ -1,31 +1,13 @@
 {
-  "name": "backend",
+  "name": "chat-app",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm run start --prefix backend"
   },
   "keywords": [],
   "author": "",
-  "type": "module",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "@giphy/js-fetch-api": "^5.6.0",
-    "@giphy/react-components": "^10.0.1",
-    "bcryptjs": "^3.0.2",
-    "chat-app": "file:..",
-    "cloudinary": "^2.6.1",
-    "cookie-parser": "^1.4.7",
-    "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.15.1",
-    "socket.io": "^4.8.1",
-    "socket.js": "^0.1.4"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.10"
-  }
+  "license": "ISC"
 }
