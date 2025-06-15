@@ -12,7 +12,7 @@ import messageRoutes from "./routes/message.route.js";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5001; // Default port for local development
+const PORT = process.env.PORT || 5001;
 const __dirname = path.resolve();
 
 app.use(express.json());
@@ -34,7 +34,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-// Initialize database connection
 connectDB();
 
 export default app;
