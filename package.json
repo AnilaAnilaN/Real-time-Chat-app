@@ -1,29 +1,13 @@
 {
   "name": "chat-app",
   "version": "1.0.0",
-  "description": "Real-time Chat Application",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "build": "npm install --prefix api && npm install --prefix frontend && npm run build --prefix frontend",
-    "start": "echo 'Use Vercel for deployment'",
-    "dev": "echo 'Run frontend and backend dev scripts separately'"
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm run start --prefix backend"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@giphy/js-fetch-api": "^5.6.0",
-    "@giphy/react-components": "^10.0.1",
-    "bcryptjs": "^3.0.2",
-    "cloudinary": "^2.6.1",
-    "cookie-parser": "^1.4.7",
-    "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.15.1",
-    "socket.io": "^4.8.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.10"
-  }
+  "license": "ISC"
 }
