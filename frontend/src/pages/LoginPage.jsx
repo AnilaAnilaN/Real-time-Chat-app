@@ -1,15 +1,15 @@
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { useAuthStore } from '../store/useAuthStore';
-import { MessageSquare, Mail, Lock, Eye, EyeOff, Loader2 } from 'lucide-react';
-import AuthImagePattern from "../components/AuthImagePattern";
-import { toast } from 'react-hot-toast';
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useAuthStore } from "../store/useAuthStore";
+import { MessageSquare, Mail, Lock, Eye, EyeOff, Loader2 } from "lucide-react";
+import AuthBackground from "../components/AuthBackground";
+import { toast } from "react-hot-toast";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const { login, isLoggingIn } = useAuthStore();
@@ -39,99 +39,74 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen grid lg:grid-cols-2">
-      {/* Left Side */}
-      <div className="flex flex-col justify-center items-center p-6 sm:p-12">
-        <div className="w-full max-w-md space-y-8">
-          {/* Logo */}
-          <div className="text-center mb-8">
-            <div className="flex flex-col items-center gap-2 group">
-              <div className="size-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <MessageSquare className="size-6 text-primary" />
-              </div>
-              <h1 className="text-2xl font-bold mt-2">Welcome Back</h1>
-              <p className="text-base-content/60">Sign in to your account</p>
-            </div>
+    <AuthBackground>
+      <div className="space-y-6 text-center">
+        <div className="flex flex-col items-center gap-2">
+          <div className="size-12 rounded-xl bg-pink-400/20 flex items-center justify-center transition-colors hover:bg-pink-500/30">
+            <MessageSquare className="size-6 text-pink-600" />
           </div>
-
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text font-medium">Email</span>
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
-                  <Mail className="size-5 text-base-content/40" />
-                </div>
-                <input
-                  type="email"
-                  className="input input-bordered w-full pl-10"
-                  placeholder="Enter your email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                />
-              </div>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Welcome Back</h1>
+          <p className="text-gray-600 text-sm sm:text-base">Sign in to your account</p>
+        </div>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Mail className="size-5 text-gray-400" />
             </div>
-
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text font-medium">Password</span>
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
-                  <Lock className="size-5 text-base-content/40" />
-                </div>
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  className="input input-bordered w-full pl-10"
-                  placeholder="Enter your password"
-                  value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                />
-                <button
-                  type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center z-10"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? (
-                    <EyeOff className="size-5 text-base-content/40" />
-                  ) : (
-                    <Eye className="size-5 text-base-content/40" />
-                  )}
-                </button>
-              </div>
+            <input
+              type="email"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent text-sm sm:text-base placeholder-gray-400"
+              placeholder="Enter your email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            />
+          </div>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Lock className="size-5 text-gray-400" />
             </div>
-
-            <button type="submit" className="btn btn-primary w-full z-10" disabled={isLoggingIn}>
-              {isLoggingIn ? (
-                <>
-                  <Loader2 className="size-5 animate-spin" />
-                  Loading...
-                </>
+            <input
+              type={showPassword ? "text" : "password"}
+              className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent text-sm sm:text-base placeholder-gray-400"
+              placeholder="Enter your password"
+              value={formData.password}
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            />
+            <button
+              type="button"
+              className="absolute inset-y-0 right-0 pr-3 flex items-center"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? (
+                <EyeOff className="size-5 text-gray-400" />
               ) : (
-                'Sign in'
+                <Eye className="size-5 text-gray-400" />
               )}
             </button>
-          </form>
-
-          <div className="text-center">
-            <p className="text-base-content">
-              Don’t have an account?{" "}
-              <Link to="/signup" className="link link-primary">
-                Create account
-              </Link>
-            </p>
           </div>
-        </div>
+          <button
+            type="submit"
+            className="w-full py-2 bg-gradient-to-r from-pink-400 to-pink-600 text-white rounded-lg hover:bg-gradient-to-l transition-colors text-sm sm:text-base disabled:opacity-50"
+            disabled={isLoggingIn}
+          >
+            {isLoggingIn ? (
+              <div className="flex items-center justify-center gap-2">
+                <Loader2 className="size-5 animate-spin" />
+                <span>Loading...</span>
+              </div>
+            ) : (
+              "Sign in"
+            )}
+          </button>
+        </form>
+        <p className="text-gray-600 text-sm">
+          Don’t have an account?{" "}
+          <Link to="/signup" className="text-pink-600 hover:underline">
+            Create account
+          </Link>
+        </p>
       </div>
-
-      {/* Right Side */}
-      <AuthImagePattern
-        title="Welcome back!"
-        subtitle="Sign in to continue your conversations and catch up with your messages."
-      />
-    </div>
+    </AuthBackground>
   );
 };
 
